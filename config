@@ -51,15 +51,15 @@ floating_modifier $mod
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
 
-# # Screenshot full screen
-# bindsym Print exec scrot ~/Pictures/screenshot_%Y-%m-%d-%H%M%S.png
-# # Screenshot selected area
-# bindsym Shift+Print exec scrot -s ~/Pictures/screenshot_%Y-%m-%d-%H%M%S.png
+# Screenshot full screen
+bindsym Print exec scrot ~/Pictures/Screenshots/screenshot_%Y-%m-%d-%H%M%S.png
+# Screenshot selected area
+bindsym Shift+Print exec scrot -s ~/Pictures/Screenshots/screenshot_%Y-%m-%d-%H%M%S.png
 
 ## Screenshots
-bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/Screenshots/$(date)"
-bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) "/home/$USER/Pictures/Screenshots/$(date)"
-bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/Screenshots/$(date)"
+# bindsym Print exec --no-startup-id maim ~/Pictures
+# bindsym $mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) ~/Pictures
+# bindsym Shift+Print exec --no-startup-id maim --select ~/Pictures
 
 
 # start a terminal
@@ -184,8 +184,6 @@ workspace 8 output eDP-1
 workspace 9 output eDP-1
 workspace 0 output eDP-1
 
-# Force focus on workspace 1 on startup (main monitor)
-exec --no-startup-id i3-msg "workspace 1"
 
 focus_follows_mouse no
 mouse_warping none
@@ -229,3 +227,13 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 for_window [class=".*"] border pixel 0
 new_window none
 new_float none
+
+assign [instance="127.0.0.1__debugger-frontend_rn_fusebox.html"] 0
+assign [class="ghostty"] 1
+assign [class="Brave-browser"] 2
+assign [class="Blueman-manager"] 3
+
+exec --no-startup-id brave-browser
+exec --no-startup-id Blueman-manager
+exec --no-startup-id ghostty
+
