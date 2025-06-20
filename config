@@ -167,22 +167,22 @@ bindsym $mod+Shift+0 move container to workspace number $ws0
 bindsym $mod+Page_Up workspace prev
 bindsym $mod+Page_Down workspace next
 
-exec --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --output HDMI-1-0 --primary --mode 1920x1080 --pos 1920x0
+exec --no-startup-id xrandr --output eDP-1-1 --mode 1920x1080 --pos 0x0 --output HDMI-1-2 --primary --mode 1920x1080 --pos 1920x0
 
 
 # Force workspaces from 1 to 7 to always open on the main monitor
-workspace 1 output HDMI-1-0
-workspace 2 output HDMI-1-0
-workspace 3 output HDMI-1-0
-workspace 4 output HDMI-1-0
-workspace 5 output HDMI-1-0
-workspace 6 output HDMI-1-0
-workspace 7 output HDMI-1-0
+workspace 1 output HDMI-1-2
+workspace 2 output HDMI-1-2
+workspace 3 output HDMI-1-2
+workspace 4 output HDMI-1-2
+workspace 5 output HDMI-1-2
+workspace 6 output HDMI-1-2
+workspace 7 output HDMI-1-2
 
 # Force workspace 0, 9, and 8 to always open on the laptop screen
-workspace 8 output eDP-1
-workspace 9 output eDP-1
-workspace 0 output eDP-1
+workspace 8 output eDP-1-1
+workspace 9 output eDP-1-1
+workspace 0 output eDP-1-1
 
 
 focus_follows_mouse no
@@ -228,12 +228,16 @@ for_window [class=".*"] border pixel 0
 new_window none
 new_float none
 
-assign [instance="127.0.0.1__debugger-frontend_rn_fusebox.html"] 0
+assign [class="teams-for-linux"] 0
 assign [class="ghostty"] 1
 assign [class="Brave-browser"] 2
-assign [class="Blueman-manager"] 3
 
+exec --no-startup-id teams-for-linux
 exec --no-startup-id brave-browser
-exec --no-startup-id Blueman-manager
 exec --no-startup-id ghostty
 
+exec_always i3-msg "workspace 0"
+exec_always i3-msg "workspace 1"
+exec_always --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ 0% 
+
+exec_always --no-startup-id xsetroot -cursor_name left_ptr
