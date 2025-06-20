@@ -52,7 +52,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # Screenshot full screen
-bindsym Print exec scrot ~/Pictures/Screenshots/screenshot_%Y-%m-%d-%H%M%S.png
+bindsym Print exec scrot -u ~/Pictures/Screenshots/screenshot_%Y-%m-%d-%H%M%S.png
 # Screenshot selected area
 bindsym Shift+Print exec scrot -s ~/Pictures/Screenshots/screenshot_%Y-%m-%d-%H%M%S.png
 
